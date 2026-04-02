@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FND in Community Sports - Understanding, Inclusion, Action</title>
+  <meta name="description" content="An accessible resource for coaches, teammates, and recreation staff on supporting athletes with Functional Neurological Disorder (FND) in community sports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --navy: #1a2744;
+      --navy-light: #2a3d66;
+      --teal: #1a8a7d;
+      --teal-light: #22b8a6;
+      --teal-pale: #e6f7f5;
+      --warm: #e8913a;
+      --warm-light: #fdf0e2;
+      --red-soft: #c0392b;
+      --bg: #fafbfd;
+      --bg-alt: #f0f2f6;
+      --text: #1e1e2a;
+      --text-mid: #4a4a5e;
+      --text-light: #6b6b80;
+      --white: #ffffff;
+      --border: #d8dce6;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(26,39,68,.08);
+      --shadow-md: 0 4px 16px rgba(26,39,68,.1);
+      --shadow-lg: 0 8px 32px rgba(26,39,68,.12);
+      --max-w: 820px;
+      --font-body: 'Libre Franklin', system-ui, sans-serif;
+      --font-heading: 'Source Serif 4', Georgia, serif;
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 17px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--navy); }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--teal-light);
+      outline-offset: 2px;
+    }
+
+    /* ── Skip Link ── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--navy);
+      color: var(--white);
+      padding: .6rem 1.2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      z-index: 1000;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      border-bottom: 3px solid var(--teal);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .7rem 1.5rem;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .nav-brand {
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: .2rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 500;
+      padding: .45rem .75rem;
+      border-radius: 6px;
+      transition: background .2s, color .2s;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(255,255,255,.12);
+      color: var(--white);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(145deg, var(--navy) 0%, var(--navy-light) 55%, var(--teal) 100%);
+      color: var(--white);
+      padding: 5rem 1.5rem 4.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 15% 80%, rgba(26,138,125,.3), transparent),
+        radial-gradient(ellipse 500px 350px at 85% 20%, rgba(232,145,58,.15), transparent);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 740px; margin: 0 auto; }
+    .hero-tag {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 1rem;
+      background: rgba(34,184,166,.12);
+      padding: .35rem .9rem;
+      border-radius: 20px;
+    }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.18;
+      margin-bottom: 1.2rem;
+      letter-spacing: -.02em;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,.88);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: justify;
+    }
+
+    /* ── Sections ── */
+    .section {
+      padding: 4.5rem 1.5rem;
+    }
+    .section-alt { background: var(--bg-alt); }
+    .section-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: .6rem;
+    }
+    .section-inner h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1.4rem;
+      letter-spacing: -.015em;
+    }
+    .section-inner h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-top: 2rem;
+      margin-bottom: .7rem;
+    }
+    .section-inner p {
+      margin-bottom: 1.1rem;
+      color: var(--text-mid);
+      text-align: justify;
+    }
+    .section-inner p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Stat Row ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 1.4rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-card .number {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--teal);
+      line-height: 1.1;
+    }
+    .stat-card .label {
+      font-size: .85rem;
+      color: var(--text-light);
+      margin-top: .4rem;
+      line-height: 1.4;
+    }
+
+    /* ── Callout / Highlight Boxes ── */
+    .callout {
+      background: var(--teal-pale);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.3rem 1.5rem;
+      margin: 1.8rem 0;
+    }
+    .callout p { color: var(--text); margin-bottom: .5rem; text-align: justify; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .callout-warm {
+      background: var(--warm-light);
+      border-left-color: var(--warm);
+    }
+
+    /* ── Barrier / Support Cards ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow .25s;
+    }
+    .card:hover { box-shadow: var(--shadow-md); }
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: .8rem;
+    }
+    .card-icon.barrier { background: #fde8e8; color: var(--red-soft); }
+    .card-icon.support { background: var(--teal-pale); color: var(--teal); }
+    .card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .4rem;
+    }
+    .card p {
+      font-size: .9rem;
+      color: var(--text-mid);
+      margin-bottom: 0;
+      text-align: justify;
+    }
+
+    /* ── Lived Experience Quote ── */
+    .quote-block {
+      border-radius: var(--radius-lg);
+      background: var(--navy);
+      color: var(--white);
+      padding: 2.2rem 2rem;
+      margin: 2.5rem 0;
+      position: relative;
+    }
+    .quote-block::before {
+      content: '\201C';
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(34,184,166,.35);
+      position: absolute;
+      top: .4rem;
+      left: 1.2rem;
+    }
+    .quote-block blockquote {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-style: italic;
+      line-height: 1.65;
+      margin-left: 1.2rem;
+      color: rgba(255,255,255,.92);
+      text-align: justify;
+    }
+    .quote-block .attribution {
+      margin-top: 1rem;
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+      font-style: normal;
+      margin-left: 1.2rem;
+    }
+
+    /* ── Action Steps ── */
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      margin: 2rem 0;
+    }
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.4rem;
+    }
+    .steps li::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: var(--white);
+      font-weight: 700;
+      font-size: .85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .steps li div h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+    .steps li div p {
+      font-size: .9rem;
+      color: var(--text-mid);
+      margin: 0;
+      text-align: justify;
+    }
+
+    /* ── Course Concept Tags ── */
+    .concept-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1.5rem 0;
+    }
+    .concept-tag {
+      font-size: .78rem;
+      font-weight: 600;
+      background: var(--teal-pale);
+      color: var(--teal);
+      padding: .35rem .85rem;
+      border-radius: 20px;
+      border: 1px solid rgba(26,138,125,.2);
+    }
+
+    /* ── References Toggle ── */
+    details {
+      margin-top: 2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    details summary {
+      padding: 1rem 1.3rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--bg-alt);
+      color: var(--navy);
+      font-size: .95rem;
+      list-style: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::before {
+      content: '▸ ';
+      margin-right: .3rem;
+    }
+    details[open] summary::before { content: '▾ '; }
+    details .ref-list {
+      padding: 1.2rem 1.3rem;
+      font-size: .82rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+    details .ref-list p {
+      margin-bottom: .6rem;
+      text-indent: -1.5rem;
+      padding-left: 1.5rem;
+      font-size: .82rem;
+      text-align: justify;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: .82rem;
+      line-height: 1.7;
+    }
+    footer strong { color: var(--white); font-weight: 600; }
+    footer a { color: var(--teal-light); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .hero { padding: 3.5rem 1.2rem 3rem; }
+      .section { padding: 3rem 1.2rem; }
+      .nav-links a { font-size: .75rem; padding: .35rem .55rem; }
+      .quote-block { padding: 1.8rem 1.3rem; }
+      .quote-block::before { font-size: 3.5rem; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      nav, .skip-link { display: none; }
+      .hero { background: var(--navy) !important; -webkit-print-color-adjust: exact; }
+      .section { padding: 2rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Skip to main content link for screen readers -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Navigation -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#main" class="nav-brand">FND &amp; Community Sports</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#lived-experience">Lived Experience</a></li>
+      <li><a href="#what-helps">What Helps</a></li>
+      <li><a href="#why-it-matters">Why It Matters</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">HSS 3103 - A3 Artifact</span>
+    <h1>FND in Community Sports: Understanding, Inclusion, Action</h1>
+    <p>A plain-language resource for coaches, recreation staff, and teammates on supporting athletes with Functional Neurological Disorder. Belonging should not depend on having a predictable body.</p>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main id="main">
+
+  <!-- Section 1: Introduction -->
+  <section id="introduction" class="section" aria-labelledby="intro-heading">
+    <div class="section-inner">
+      <p class="section-label">Section 01</p>
+      <h2 id="intro-heading">What Is FND, and Why Does It Matter in Sport?</h2>
+
+      <p><strong>Functional Neurological Disorder (FND)</strong> is a condition in which genuine neurological symptoms arise from problems with how the nervous system <em>functions</em>, rather than from structural damage to the brain or nerves. Classified in the DSM-5 as Functional Neurological Symptom Disorder, FND is often described using a "software vs. hardware" analogy: the brain's hardware (its physical structure) is intact, but the software (the way signals are processed and sent) is disrupted (Espay et al., 2018; Bennett et al., 2021). Standard imaging like MRI and CT scans appear normal because they detect structural pathology, not functional disruption.</p>
+
+      <p>Neuroimaging research has identified measurable abnormalities in FND, including reduced activity in brain areas responsible for voluntary movement planning and disconnection between regions that generate the sense of agency (the feeling of "I am controlling this movement"). The current biopsychosocial model highlights how the brain's prediction systems can generate real symptoms through abnormal processing of expectations, attention, and sensory data. Past sensitizing events can include physical trauma, medical illness, or physiological events, not only psychological stress (Espay et al., 2018; Stone, 2024).</p>
+
+      <h3>Symptoms Relevant to Sport Participation</h3>
+
+      <p>FND symptoms span multiple domains that directly affect the ability to play sport. <strong>Motor symptoms</strong> include functional weakness or paralysis, functional tremor (involuntary shaking that changes with distraction), gait disorders such as excessive slowness and knee buckling, dystonia, and jerky movements. <strong>Sensory symptoms</strong> include numbness, tingling, or altered sensation in patterns inconsistent with recognized neurological disease. <strong>Fatigue and cognitive difficulties</strong> include pervasive fatigue and functional cognitive disorder ("brain fog") affecting memory and concentration. <strong>Functional (dissociative) seizures</strong> are paroxysmal events resembling epileptic seizures, accounting for roughly 50% of people admitted with suspected status epilepticus (Stone, 2024). Pain comorbidities such as fibromyalgia, chronic regional pain, and migraine also commonly co-occur (Bennett et al., 2021).</p>
+
+      <h3>Diagnosis: Ruled In, Not Ruled Out</h3>
+
+      <p>A critical paradigm shift in the understanding of FND is that it is now <strong>diagnosed based on positive clinical signs, not by exclusion</strong>. The DSM-5 removed the old requirement for psychological stress as a prerequisite and bases diagnosis on specific signs like <strong>Hoover's sign</strong> (impairment of voluntary hip extension with normal automatic hip extension during the opposite leg's movement, demonstrating intact motor pathways) and the <strong>Tremor Entrainment Test</strong> (functional tremor changes frequency to match a new rhythmic task, unlike organic tremor). FND has high diagnostic stability: only 0.4% of patients later received an unexpected organic diagnosis at 18-month follow-up (Stone et al., 2009; Espay et al., 2018).</p>
+
+      <h3>How Common Is FND?</h3>
+
+      <p>FND is far more common than many people realize. A 2025 systematic review by Finkelstein et al. established that FND incidence is 4 to 12 per 100,000 per year, with a minimum point prevalence of 80 to 140 per 100,000. This exceeds the prevalence of multiple sclerosis (30 per 100,000 worldwide), motor neuron disease (5 per 100,000), and CNS cancers (11 per 100,000). FND is the <strong>second most common reason for visiting a neurologist</strong> after headache, comprising 5 to 15% of neurology outpatients (Bennett et al., 2021). Disability and distress levels are comparable to epilepsy or Parkinson's disease, and symptoms are often not transient: an 80% symptom persistence rate was found at 14-year follow-up (Stone, 2024).</p>
+
+      <div class="callout">
+        <p><strong>Why community sport matters here:</strong> Recreational leagues combine physical activity with social connection, including friendships, routine, identity, and belonging. A 2023 systematic review of 29 studies found sport participation was associated with better overall mental health, improved mood, higher life satisfaction, higher self-esteem, and reduced depression and anxiety. Critically, adults participating in <em>team sport</em> had more favorable outcomes than those in individual sport, with team-based activities providing additional benefits for social outcomes across adulthood (Eather et al., 2023). When someone with FND loses access to sport, they often lose the social participation that comes with it too.</p>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="number">1 in 6</div>
+          <div class="label">people globally (1.3 billion) experience significant disability (WHO, 2024)</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">27%</div>
+          <div class="label">of Canadians aged 15+ (8 million people) reported at least one disability in 2022 (Statistics Canada, 2023)</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">2nd</div>
+          <div class="label">most common reason for visiting a neurologist, after headache (Bennett et al., 2021)</div>
+        </div>
+      </div>
+
+      <h3>What Makes FND "Episodic"?</h3>
+
+      <p>FND falls under the broader category of <strong>episodic disabilities</strong>: chronic conditions characterized by fluctuating periods and degrees of illness and wellness that are unpredictable in duration, symptom type, and frequency (Realize Canada, 2015). Unlike static disabilities (which remain relatively constant) or progressive disabilities (which worsen over time), episodic disabilities involve an oscillation between periods of full functioning and significant impairment. A person may be well for weeks, then experience multiple intense episodes in rapid succession, each different in character and duration.</p>
+
+      <p>Statistics Canada data confirms that <strong>61% of people with disabilities reported that their limitations changed over time</strong> (progressive, recurrent, or fluctuating), while only 39% experienced continuous limitations (Statistics Canada, 2019). Realize Canada estimates that over 2 million Canadians live with ongoing episodic disabilities, spanning autoimmune conditions (MS, lupus), neurological conditions (epilepsy, migraine, FND), and mental health conditions (depression, bipolar disorder) (Realize Canada, 2015). The Institute for Work &amp; Health notes that episodic conditions are often managed as "a performance or disciplinary issue instead of a health-related challenge" because institutions are designed for stable, predictable conditions (Gignac et al., 2021).</p>
+    </div>
+  </section>
+
+  <!-- Section 2: The Problem -->
+  <section id="problem" class="section section-alt" aria-labelledby="problem-heading">
+    <div class="section-inner">
+      <p class="section-label">Section 02</p>
+      <h2 id="problem-heading">The Problem: When Sport Is Designed for Predictable Bodies</h2>
+
+      <p>Community sport is typically built around assumptions: you show up every week, you play the full game, you keep pace with your teammates, and you socialize afterward. These assumptions work well for people whose bodies behave consistently, but they create real barriers for people with episodic conditions like FND.</p>
+
+      <p>The <strong>International Classification of Functioning, Disability and Health (ICF)</strong>, endorsed by all 191 WHO Member States in 2001, defines disability as the negative outcome of interaction between a health condition and contextual factors. It replaced earlier deficit-focused models with a biopsychosocial framework that classifies <em>functioning</em>, not people. Critically, the ICF shows that two people with the same diagnosis can have very different participation levels depending on their environments (WHO, 2001). Applied to FND in sport: the health condition is FND; the activities are running, changing direction, and following game plans; participation is involvement in team sport and social life; and <strong>environmental factors</strong> (the modifiable domain) include coach attitudes, teammate understanding, substitution policies, and schedule flexibility.</p>
+
+      <p>A 2025 systematic review by Elipe-Lorenzo et al. (17 studies, 2000-2024) focused specifically on mainstream and conventional sports and identified <strong>12 categories of barriers</strong>. Attitudinal barriers were the most prevalent, cited in 11 of 17 studies, alongside ableist ideas and overly competitive approaches. Other major barriers include lack of trained staff, lack of accessible programs, emotional and psychological barriers (fear of social judgment, low self-esteem), limited access to information, and transport barriers (Elipe-Lorenzo et al., 2025). Importantly, for people with disabilities related to mental health, pain, chronic illness, and learning, mainstream sport may be the only participation option, since they do not fit within eligible impairment types for disability-specific sport like the Paralympics or Special Olympics.</p>
+
+      <h3>Common Barriers in Community Sport Settings</h3>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon barrier" aria-hidden="true">📋</div>
+          <h4>Rules and Attendance Expectations</h4>
+          <p>Rigid attendance norms, limited substitution flexibility, and a "reliability" culture can penalize people whose symptoms fluctuate. Missing games can mean losing a roster spot, even when the absence is medically necessary. Standard accommodation models assume stable, known limitations, but episodic conditions are unpredictable by definition.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon barrier" aria-hidden="true">🏟️</div>
+          <h4>Space and Sensory Overload</h4>
+          <p>Loud gyms, bright overhead lighting, and high-stimulus environments can aggravate headaches and sensory symptoms. There is often no "in-between" space: you are either fully playing or fully gone, with nowhere to rest and still feel included. This all-or-nothing structure is especially disabling for conditions that fluctuate within a single session.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon barrier" aria-hidden="true">🚗</div>
+          <h4>Logistics and Transportation</h4>
+          <p>When a person is symptomatic, getting to the game can become the hardest part. This is a participation barrier, not merely a medical issue. Timing, distance, and the unpredictability of symptoms all interact. People with disabilities are almost twice as likely to be physically inactive (43%) compared to those without (23%), with inactivity rising to 51% among those with three or more impairments (Sport England, 2024).</p>
+        </div>
+        <div class="card">
+          <div class="card-icon barrier" aria-hidden="true">💬</div>
+          <h4>Attitudes and "Prove It" Culture</h4>
+          <p>When symptoms are invisible or inconsistent, teammates and coaches may respond with doubt. "Play through pain" culture and pressure to prove one's disability intensifies stigma and discourages pacing or stopping when needed (Nixon, 1993). Research shows invisible disabilities account for 70-80% of all disabilities yet face greater prejudice than visible disabilities (McLoughlin et al., 2024).</p>
+        </div>
+        <div class="card">
+          <div class="card-icon barrier" aria-hidden="true">🧠</div>
+          <h4>Stigma and Delegitimization</h4>
+          <p>FND stigma is pervasive and measurable. A systematic review of 127 studies across 148 countries found stigma operates at intrapersonal, interpersonal, and structural levels. Among patients with functional seizures, 76.5% felt stigmatized, compared to 59.5% of patients with epileptic seizures. Even clinicians demonstrate implicit bias: a study using implicit attitude measurement found doctors showed an implicit FND-illegitimate bias despite self-reporting that FND is legitimate (Begley et al., 2023; McLoughlin et al., 2024).</p>
+        </div>
+        <div class="card">
+          <div class="card-icon barrier" aria-hidden="true">🔄</div>
+          <h4>Disclosure Dilemmas</h4>
+          <p>Athletes with FND face complex decisions about whether and how to tell others about their condition. Disclosure may bring support, but it can also invite stigma, pity, or unwanted attention. The "doctor's note model" of accommodation does not work for conditions where duration and severity change constantly. The burden of explaining and justifying falls on the person who is already symptomatic (Institute for Work &amp; Health, 2020).</p>
+        </div>
+      </div>
+
+      <div class="callout-warm callout">
+        <p><strong>The core issue:</strong> The social model of disability, developed by disabled people in the UK, distinguishes between <em>impairment</em> (a person's physical, mental, or sensory limitation) and <em>disability</em> (the disadvantage created by a society that excludes people with impairments from mainstream activity). The medical model asks "What is wrong with you?" while the social model asks "What barriers do you face?" For FND in sport, this reframes the question from "Can this person play?" to "What features of our league structure prevent this person from participating?" (Oliver, 1990; Goering, 2015).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Lived Experience -->
+  <section id="lived-experience" class="section" aria-labelledby="lived-heading">
+    <div class="section-inner">
+      <p class="section-label">Section 03</p>
+      <h2 id="lived-heading">Lived Experience: What Participation Actually Looks Like</h2>
+
+      <p>To understand how FND shapes sport participation, it helps to hear from people who live it. In an interview conducted for this project, a person living with FND (referred to as "Alex") described key dimensions of their experience in recreational sport.</p>
+
+      <div class="quote-block">
+        <blockquote>
+          Participating in sports - FND affects my ability to participate in community life as it causes me debilitating headaches and pain in my arm and leg. The headaches make it really difficult to engage in conversations for any extended periods of time, and the physical pain makes it difficult for me to partake in any physical activities during a bad episode.
+        </blockquote>
+        <div class="attribution">"Alex," person living with FND, interviewed for this project</div>
+      </div>
+
+      <h3>Unpredictability</h3>
+      <p>Participation can shift from "I'm fine" to "I need to stop" within minutes. Committing to a team activity feels risky because there is no way to guarantee a good day. On flare days, Alex may need to sit out, leave early, or switch into a lower-intensity role. That moment of transition is where awkwardness, guilt, and misunderstanding tend to concentrate. Alex describes it simply: committing to a game feels risky, but skipping games creates disconnection. Sometimes he shows up anyway, hoping it will be fine, and then must step back when symptoms hit. Sport culture does not always have a script for that.</p>
+
+      <h3>Cognitive and Energy Load</h3>
+      <p>Self-monitoring and decision-making (tracking symptoms, assessing whether to stay or go, managing how others perceive the situation) are exhausting in themselves, on top of the physical demands of sport. When headaches are severe, even off-field conversation becomes difficult, cutting off the social participation that makes sport meaningful. Alex also lives with ADHD, diagnosed in childhood, and FND episodes can flatten the management routines he has built over years. Concentrating on rules, tracking the ball, and staying emotionally regulated all become harder when FND symptoms are active (Alberta Health Services, n.d.).</p>
+
+      <h3>Being Believed</h3>
+      <p>When symptoms are invisible or look inconsistent from the outside, disability is intensified by doubt and stigma. A 2025 qualitative systematic review on the lived experience of FND identified eight overarching themes, with <strong>stigma</strong> and <strong>"the battle or fight" for recognition</strong> appearing across nearly all studies. The central meta-theme was "relationally regulated selves," meaning the FND experience is fundamentally shaped by relational and social contexts (Szasz et al., 2025). In sport, a missed cue can look like not caring, a sudden exit can look like flaking, and an invisible symptom can be treated like an excuse.</p>
+
+      <p>A separate meta-ethnographic synthesis found four major themes from 16 qualitative studies: <strong>stigmatized by delegitimization</strong> (treated as having a less valid social identity), <strong>stigmatized by social exclusion and rejection</strong>, <strong>coping with stigma</strong>, and <strong>stigma threatening identity</strong> (Foley, Kirkby, &amp; Eccles, 2024). Robson and Lian's study of 135 people with non-epileptic seizures found the central experience was "blame and humiliation," with patients describing being negatively stereotyped and held morally responsible by others (Robson &amp; Lian, 2017).</p>
+
+      <div class="callout">
+        <p><strong>The disability paradox:</strong> Outsiders may assume that severe symptoms automatically erase quality of life. But Albrecht and Devlieger's foundational 1999 study found that among 153 persons with serious, persistent disabilities, <strong>54.3% reported excellent or good quality of life</strong>. High quality of life depended on finding balance between body, mind, and spirit, and on establishing harmonious relationships within one's social context, not on the absence of impairment. The social environment of a sports team (belonging, routine, shared purpose) may actually be a key facilitator of quality of life for someone with FND. If disability inherently destroyed quality of life, the paradox would not exist. Instead, quality of life is largely determined by contextual factors: the very factors that sport environments can influence (Albrecht &amp; Devlieger, 1999).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: What Helps -->
+  <section id="what-helps" class="section section-alt" aria-labelledby="helps-heading">
+    <div class="section-inner">
+      <p class="section-label">Section 04</p>
+      <h2 id="helps-heading">What Helps: Practical Strategies for Coaches and Teams</h2>
+
+      <p>If you are a coach, recreation coordinator, or teammate, you do not need to become an expert on FND to make a difference. The following strategies are grounded in research and lived experience. Most of them benefit everyone on the team, not just people with episodic conditions. Universal design in sport means designing programmes and environments to be usable by all people from the outset, proactive rather than reactive (Woods, 2019).</p>
+
+      <p>Two established adaptation frameworks guide activity modification. The <strong>STEP Framework</strong> (Youth Sport Trust, UK) adjusts Space, Task, Equipment, and People. The <strong>TREE Framework</strong> (Australian Sports Commission) modifies Teaching/coaching style, Rules and regulations, Equipment, and Environment. Both emphasize that small modifications can enable participation without fundamentally changing the activity (Kiuppis, 2016).</p>
+
+      <ol class="steps">
+        <li>
+          <div>
+            <h4>Normalize Flexible Participation</h4>
+            <p>Allow no-questions-asked substitutions for health reasons. Create ways for people to step in and out of play without losing their place on the team. Treat stopping as a legitimate decision, not a disruption. The Canadian Disability Participation Project's Quality Parasport Participation Framework identifies <strong>autonomy</strong> (independence, choice, control) as a core building block of quality participation (Evans et al., 2018).</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Create an "In-Between" Space</h4>
+            <p>Offer a quieter spot near the action where someone can rest without fully leaving. A bench away from direct sensory overload (noise, lights) lets a person stay socially connected even when they cannot physically play. Research shows that exclusion from sport causes measurable harm: a study of 3,931 adults found that those who <em>dropped out</em> of sport had the worst mental health profile, worse even than those who never participated (Upenieks, Ryan, &amp; Knoester, 2024). Maintaining a sense of connection matters.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Build Awareness Without Forcing Disclosure</h4>
+            <p>Brief, standardized awareness for coaches and referees about episodic and invisible disabilities reduces the burden on the person who is symptomatic. They should not have to explain their condition every time. Canadian clinical resources for FND already emphasize education and multidisciplinary management (Townsend et al., 2024; Alberta Health Services, n.d.), and those materials could be adapted into plain-language sport guidelines. A simple protocol (what to do if someone has a sudden neurological episode, and how to respond respectfully afterward) would reduce both panic and stigma.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Offer Role Flexibility</h4>
+            <p>On days when full play is not possible, someone can contribute through warm-ups, timekeeping, coaching cues, or simply being present. Normalize role-shifting so participation is not all-or-nothing. The Quality Parasport Participation Framework also identifies <strong>belongingness</strong> (feeling included and accepted) and <strong>meaning</strong> (personal significance) as essential components. Non-playing roles can preserve both (Evans et al., 2018).</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Check "Play Through Pain" Culture</h4>
+            <p>A team culture that values toughness over wellbeing discourages anyone from pacing themselves. When pacing is normalized for everyone, the stigma of stopping during a flare is reduced. This is good for injury prevention across the board. A 2025 study on ableism in sport found that the default expectation of normative bodies and consistent performance positions disabled people as "outsiders," and that ableist frameworks are deeply embedded in how sporting environments operate (Townsend et al., 2026).</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Respond Calmly to Episodes</h4>
+            <p>If someone has a sudden neurological episode during a game, stay calm, give them space, and ask what they need. Panic and excessive attention can make the situation worse. FND treatment approaches emphasize education, self-management, and redirecting attention away from symptoms rather than focusing on them (Nielsen et al., 2015). A calm, informed environment supports recovery. The Coaching Association of Canada states: "Most coaches who work with athletes with a disability soon discover that coaching these participants is fundamentally no different than coaching any other athlete."</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon support" aria-hidden="true">🔄</div>
+          <h4>Rigid League = Dropout &amp; Isolation</h4>
+          <p>When sport demands perfect attendance and consistent performance, episodic conditions push people out. Not because they do not want to participate, but because the structure does not accommodate fluctuation. A study found that sport dropout was associated with worse mental health than never participating at all (Upenieks et al., 2024).</p>
+        </div>
+        <div class="card">
+          <div class="card-icon support" aria-hidden="true">✅</div>
+          <h4>Flexible League = Still Belong</h4>
+          <p>When leagues adopt flexible structures and normalize pacing, the same symptoms may still be present, but they do not have to remove someone from community life. Disability is reduced by context. Team sport specifically provides "more potent and additional benefits for mental and social outcomes" compared to individual activity (Eather et al., 2023).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Why It Matters -->
+  <section id="why-it-matters" class="section" aria-labelledby="matters-heading">
+    <div class="section-inner">
+      <p class="section-label">Section 05</p>
+      <h2 id="matters-heading">Why This Matters</h2>
+
+      <p>Canada's <strong>Policy on Sport for Persons with a Disability</strong> (2006) provides a framework for "engaging partners and stakeholders in initiating changes that aim to reduce and ultimately eliminate sport-specific barriers." It addresses environmental, structural, systemic, social, and personal barriers, and envisions "the full and active participation of persons with a disability in Canadian sport at all levels" (Government of Canada, 2006). The UN Convention on the Rights of Persons with Disabilities (Article 30) similarly requires states to "encourage and promote the participation of persons with disabilities in mainstream sporting activities at all levels."</p>
+
+      <p>These policy visions align with everything on this page. But day-to-day reality is still mostly governed by informal discretion: how flexible a coach feels, whether teammates understand, and whether the program has any built-in way to accommodate episodic symptoms without forcing constant explanations.</p>
+
+      <h3>FND Treatment Is Advancing, But Access Gaps Remain</h3>
+
+      <p>Evidence-based treatments for FND exist and are improving. The foundational consensus recommendation for physiotherapy in FND established that treatment should use education, movement retraining, and self-management strategies (Nielsen et al., 2015). The CODES trial (n=368, the largest RCT for any FND treatment) found CBT produced significantly longer seizure-free periods, better quality of life, and less psychosocial impairment (Goldstein et al., 2020). A 2024 JAMA Neurology RCT was the first to combine physiotherapy and CBT for functional movement disorders (Macias-Garcia et al., 2024). In Canada, a 2024 pilot study evaluated a 5-day outpatient multidisciplinary treatment programme for FND and found significant improvements in occupational performance, quality of life, and mobility, sustained at 6-month follow-up (Townsend et al., 2024). Sport remains almost completely unstudied in FND, but one 2024 review noted it may have "distinct effects compared to other physical activity literature given its added layer of neuropsychological and social components" (Boylan et al., 2024).</p>
+
+      <h3>Course Connections</h3>
+
+      <div class="concept-tags">
+        <span class="concept-tag">Dynamic Disability</span>
+        <span class="concept-tag">ICF Framework</span>
+        <span class="concept-tag">Stigma</span>
+        <span class="concept-tag">Disability Paradox</span>
+        <span class="concept-tag">Invisible Disability</span>
+        <span class="concept-tag">Episodic Disability</span>
+        <span class="concept-tag">Social Model</span>
+        <span class="concept-tag">Multimorbidity</span>
+      </div>
+
+      <p><strong>Dynamic disability</strong> means disability can change over time and context. Accessibility therefore requires design that anticipates fluctuation, not a fixed state (Russell, Module 4a, W26). The ICF framework reinforces this: disability emerges at the intersection of health conditions and environmental factors, including systems, spaces, rules, and attitudes (WHO, 2001). A Scottish ICF-based study found the framework provided a more detailed indicator of key impairments affecting sport participation, and that incorporating social and environmental factors could predict participation likelihood (Davison et al., 2024).</p>
+
+      <p><strong>Stigma</strong> around FND is extensive and well-documented. McLoughlin et al.'s systematic review (127 studies, 148 countries, 18,886 participants) found stigma operates at intrapersonal, interpersonal, and structural levels (McLoughlin et al., 2024). In sport, this translates to a participation tax: the constant need to justify one's presence, explain one's limits, and manage others' perceptions. Even healthcare professionals demonstrate implicit illegitimacy bias toward FND (Begley et al., 2023).</p>
+
+      <p><strong>The disability paradox</strong> reminds us that outsiders often misjudge quality of life for people with significant impairments. People living with FND still seek community, belonging, and physical activity. The paradox challenges the assumption that disability inevitably destroys quality of life and reinforces that quality of life is largely shaped by contextual factors (Albrecht &amp; Devlieger, 1999). <strong>Multimorbidity</strong> also applies: Alex's experience of ADHD alongside FND illustrates how overlapping conditions can compound each other in everyday settings, even when each one is manageable on its own (Russell, Module 6a, W26).</p>
+
+      <div class="callout">
+        <p><strong>Key takeaway:</strong> When community sport is designed for predictable bodies and consistent attendance, episodic conditions become disabling. When leagues adopt flexible structures and normalize pacing, disability is reduced by context, not by "fixing" the person. Better understanding leads to better inclusion, which leads to better outcomes for everyone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: References -->
+  <section id="references" class="section section-alt" aria-labelledby="ref-heading">
+    <div class="section-inner">
+      <p class="section-label">References</p>
+      <h2 id="ref-heading">Sources and Further Reading</h2>
+
+      <details open>
+        <summary>Academic Sources</summary>
+        <div class="ref-list">
+          <p>Albrecht, G. L., &amp; Devlieger, P. J. (1999). The disability paradox: High quality of life against all odds. <em>Social Science &amp; Medicine</em>, 48(8), 977-988. <a href="https://pubmed.ncbi.nlm.nih.gov/10390038/" target="_blank" rel="noopener">PubMed</a></p>
+
+          <p>Alberta Health Services / University of Calgary. (n.d.). Functional neurological disorder (FND): Patient information handout. <a href="https://cumming.ucalgary.ca/sites/default/files/teams/122/programs/Movement%20Disorders%20Clinic/SHC%20FND%20Patient%20Handout.pdf" target="_blank" rel="noopener">PDF</a></p>
+
+          <p>Begley, R., et al. (2023). Clinicians' implicit and explicit attitudes about the legitimacy of functional neurological disorders correlate with referral decisions. <em>British Journal of Health Psychology</em>, 28(2), 604-618. doi: 10.1111/bjhp.12643.</p>
+
+          <p>Bennett, K., et al. (2021). A practical review of functional neurological disorder (FND) for the general physician. <em>Clinical Medicine</em>, 21(1), 28-36. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7850207/" target="_blank" rel="noopener">PMC</a></p>
+
+          <p>Boylan, K. A., et al. (2024). Functional neurological disorder, physical activity and exercise: What we know and what we can learn from comorbid disorders. <em>Epilepsy &amp; Behavior Reports</em>, 27, 100682. doi: 10.1016/j.ebr.2024.100682.</p>
+
+          <p>Davison, G., et al. (2024). The ICF framework: A new approach to enhance sport and physical activity participation among people with disabilities in Scotland. <em>Frontiers in Sports and Active Living</em>, 6, 1225198. doi: 10.3389/fspor.2024.1225198.</p>
+
+          <p>Eather, N., Wade, L., Pankowiak, A., &amp; Eime, R. (2023). The impact of sports participation on mental health and social outcomes in adults: A systematic review. <em>Systematic Reviews</em>, 12, 102. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10286465/" target="_blank" rel="noopener">PMC</a></p>
+
+          <p>Elipe-Lorenzo, P., et al. (2025). Barriers faced by people with disabilities in mainstream sports: A systematic review. <em>Frontiers in Sports and Active Living</em>, 7, 1520962. <a href="https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2025.1520962/full" target="_blank" rel="noopener">Full text</a></p>
+
+          <p>Espay, A. J., et al. (2018). Current concepts in diagnosis and treatment of functional neurological disorders. <em>JAMA Neurology</em>, 75(9), 1132-1141. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7293766/" target="_blank" rel="noopener">PMC</a></p>
+
+          <p>Evans, M. B., et al. (2018). Integrating insights from the parasport community to understand optimal experiences: The Quality Parasport Participation Framework. <em>Psychology of Sport and Exercise</em>, 37, 79-90.</p>
+
+          <p>Finkelstein, S. A., et al. (2025). Incidence and prevalence of functional neurological disorder: A systematic review. <em>J. Neurol. Neurosurg. Psychiatry</em>, 96(4), 383-395. doi: 10.1136/jnnp-2024-334767.</p>
+
+          <p>Foley, C., Kirkby, A., &amp; Eccles, F. J. R. (2024). A meta-ethnographic synthesis of the experiences of stigma amongst people with functional neurological disorder. <em>Disability and Rehabilitation</em>, 46(1), 1-12. doi: 10.1080/09638288.2022.2155714.</p>
+
+          <p>Gignac, M. A. M., et al. (2021). Disclosure, privacy and workplace accommodation of episodic disabilities. <em>J. Occupational Rehabilitation</em>, 31(4), 749-764. doi: 10.1007/s10926-021-09964-1.</p>
+
+          <p>Goering, S. (2015). Rethinking disability: The social model of disability and chronic disease. <em>Current Reviews in Musculoskeletal Medicine</em>, 8(2), 134-138. doi: 10.1007/s12178-015-9273-z.</p>
+
+          <p>Goldstein, L. H., et al. (2020). Cognitive behavioural therapy for adults with dissociative seizures (CODES): A pragmatic, multicentre, randomised controlled trial. <em>The Lancet Psychiatry</em>, 7(6), 491-505.</p>
+
+          <p>Macias-Garcia, D., et al. (2024). Combined physiotherapy and cognitive behavioral therapy for functional movement disorders: A randomized clinical trial. <em>JAMA Neurology</em>, 81(9), 966-976. <a href="https://jamanetwork.com/journals/jamaneurology/fullarticle/2822067" target="_blank" rel="noopener">JAMA</a></p>
+
+          <p>McLoughlin, C., et al. (2024). How stigma unfolds for patients with Functional Neurological Disorder. <em>J. Psychosomatic Research</em>, 181, 111667. doi: 10.1016/j.jpsychores.2024.111667.</p>
+
+          <p>McLoughlin, C., et al. (2024). Stigma in functional neurological disorder (FND): A systematic review. <em>Clinical Psychology Review</em>, 112, 102460. doi: 10.1016/j.cpr.2024.102460.</p>
+
+          <p>McLoughlin, C., et al. (2025). Iatrogenic harm in functional neurological disorder. <em>Brain</em>, 148(1), 27-38. doi: 10.1093/brain/awae283.</p>
+
+          <p>Nielsen, G., et al. (2015). Physiotherapy for functional motor disorders: A consensus recommendation. <em>J. Neurol. Neurosurg. Psychiatry</em>, 86(10), 1113-1119. doi: 10.1136/jnnp-2014-309255.</p>
+
+          <p>Nixon, H. L. (1993). Accepting the risks of pain and injury in sport: Mediated cultural influences on playing hurt. <em>Sociology of Sport Journal</em>, 10(2), 183-196.</p>
+
+          <p>Oliver, M. (1990). <em>The Politics of Disablement</em>. London: Macmillan.</p>
+
+          <p>Robson, C., &amp; Lian, O. S. (2017). "Blaming, shaming, humiliation": Stigmatising medical interactions among people with non-epileptic seizures. <em>Wellcome Open Research</em>, 2, 55.</p>
+
+          <p>Stone, J. (2024). Functional neurological disorder: Defying dualism. <em>World Psychiatry</em>, 23(2). doi: 10.1002/wps.21151.</p>
+
+          <p>Stone, J., et al. (2009). Symptoms "unexplained by organic disease" in 1144 new neurology out-patients. <em>Brain</em>, 132(10), 2878-2888.</p>
+
+          <p>Szasz, A., Korner, A., &amp; McLean, L. (2025). Qualitative systematic review on the lived experience of functional neurological disorder. <em>BMJ Neurology Open</em>, 7(1), e000694. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11751973/" target="_blank" rel="noopener">PMC</a></p>
+
+          <p>Townsend, J., et al. (2024). The effectiveness of brief multidisciplinary outpatient treatment for functional neurological disorder: A pilot study. <em>Physiotherapy Canada</em>. doi: 10.3138/ptc-2023-0066.</p>
+
+          <p>Townsend, R. C., et al. (2026). Articulations of ableism in sport and physical activity. <em>Sociology of Sport Journal</em>. doi: 10.1177/01937235251384735.</p>
+
+          <p>Upenieks, L., Ryan, B., &amp; Knoester, C. (2024). Better to have played than not played? Childhood sport participation, dropout frequencies, and mental health in adulthood. <em>Sociology of Sport Journal</em>. doi: 10.1123/ssj.2023-0165.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Government, Policy, and Organizational Sources</summary>
+        <div class="ref-list">
+          <p>Dalen, H. B., &amp; Seippel, O. (2021). Friends in sports: Social networks in leisure, school and social media. <em>Int. J. Environmental Research and Public Health</em>, 18(12), 6197. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8229858/" target="_blank" rel="noopener">PMC</a></p>
+
+          <p>Government of Canada / Sport Canada. (2006). Policy on Sport for Persons with a Disability. <a href="https://www.canada.ca/en/canadian-heritage/services/sport-policies-acts-regulations/policy-persons-with-disability.html" target="_blank" rel="noopener">Policy link</a></p>
+
+          <p>Institute for Work &amp; Health. (2020). Workplaces face many complex challenges when managing episodic disabilities: Study. <a href="https://www.iwh.on.ca/newsletters/at-work/101/" target="_blank" rel="noopener">IWH</a></p>
+
+          <p>Institute for Work &amp; Health. (2025). Episodic disabilities: ACED Toolkit. <a href="https://aced.iwh.on.ca/episodic-disabilities" target="_blank" rel="noopener">ACED Toolkit</a></p>
+
+          <p>Realize Canada. (2015). What is episodic disability? <a href="https://www.realizecanada.org/our-work/episodic-disabilities/what-is-episodic-disability/" target="_blank" rel="noopener">Realize Canada</a></p>
+
+          <p>Rhodes, R. E., et al. (2025). Effect of recreational sport and physical activity participation on mental health and relationship satisfaction. <em>Ann. Behav. Med.</em> doi: 10.1093/abm/kaae081.</p>
+
+          <p>Sport England. (2024). Disabled people. <a href="https://www.sportengland.org/research-and-data/research/disabled-people" target="_blank" rel="noopener">Sport England</a></p>
+
+          <p>Sport Ottawa. (2023). Inclusion for participants with a disability. <a href="https://sportottawa.ca/inclusion-for-participants-with-a-disability/" target="_blank" rel="noopener">Sport Ottawa</a></p>
+
+          <p>Statistics Canada. (2019). The dynamics of disability: Progressive, recurrent or fluctuating? <a href="https://www150.statcan.gc.ca/n1/pub/89-654-x/89-654-x2019002-eng.htm" target="_blank" rel="noopener">Full report</a></p>
+
+          <p>Statistics Canada. (2023). Canadian Survey on Disability, 2017 to 2022. <a href="https://www150.statcan.gc.ca/n1/daily-quotidien/231201/dq231201b-eng.htm" target="_blank" rel="noopener">The Daily</a></p>
+
+          <p>World Health Organization. (2001). International Classification of Functioning, Disability and Health (ICF). <a href="https://www.who.int/standards/classifications/international-classification-of-functioning-disability-and-health" target="_blank" rel="noopener">WHO</a></p>
+
+          <p>World Health Organization. (2024). Disability and health (Fact sheet). <a href="https://www.who.int/news-room/fact-sheets/detail/disability-and-health" target="_blank" rel="noopener">Fact sheet</a></p>
+
+          <p>World Health Organization &amp; World Bank. (2011). World Report on Disability. <a href="https://www.ncbi.nlm.nih.gov/books/NBK304082/" target="_blank" rel="noopener">Full report</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Course Materials</summary>
+        <div class="ref-list">
+          <p>Russell, L. (W26). Module #3a - Sync. Lecture slides (systems can disable or enable). HSS 3103, University of Ottawa.</p>
+          <p>Russell, L. (W26). Module #3b - Sync. Lecture slides (ICF definition; stigma/attitudes). HSS 3103, University of Ottawa.</p>
+          <p>Russell, L. (W26). Module #4a - Sync: Dynamic Disability, Time, and Accessibility in Everyday Life. Lecture slides. HSS 3103, University of Ottawa.</p>
+          <p>Russell, L. (W26). Module #5a - Sync. Lecture slides (WHO barriers contributing to disability). HSS 3103, University of Ottawa.</p>
+          <p>Russell, L. (W26). Module #6a - Sync: Multimorbidity in Real Systems. Lecture slides. HSS 3103, University of Ottawa.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <p><strong>FND in Community Sports: Understanding, Inclusion, Action</strong></p>
+  <p>HSS 3103 - Experience of Illness, Impairment and Disability / Winter 2026</p>
+  <p>University of Ottawa / Instructor: Professor Luke Russell</p>
+  <p style="margin-top: .8rem; font-size: .75rem; color: rgba(255,255,255,.45);">
+    Daniil Cebotov - 300368373
+  </p>
+</footer>
+
+</body>
+</html>
